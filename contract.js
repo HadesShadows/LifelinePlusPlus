@@ -57,6 +57,19 @@ var abi =
         "type": "function"
     },
     {
+        "inputs":[],
+        "name":"return_donor_number",
+        "outputs":[
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type":"function"
+    },
+    {
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
@@ -116,4 +129,15 @@ function show_details() {
             document.getElementById("get_age").innerHTML = result[2];
         }
     });
+}
+
+function returns_donor_number()
+{
+    var myContract = new web3.eth.Contract(abi, contractaddress, {from: account, gasPrice: '5000000', gas: '500000'});
+    var result = myContract.methods.return_donor_count().call(function (err, results) {
+        if (err) { console.log(err); }
+        if (results) {
+            document.getElementById("get_count").innerHTML = results;
+        }
+    }); 
 }
