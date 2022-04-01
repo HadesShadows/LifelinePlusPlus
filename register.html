@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Become A Donor</title>
+</head>
+
+<body>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+    <script src="/contract.js"></script>
+
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
+            <div class="flex justify-center">
+                <img src="https://img.icons8.com/external-fauzidea-flat-fauzidea/344/external-blood-medical-fauzidea-flat-fauzidea.png" alt="Logo" width="100px" height="100px">
+            </div>
+            <h3 class="text-2xl font-bold text-center">Become a Blood Donor</h3>
+            <form action="">
+                <div class="mt-4">
+                    <div>
+                        <label class="block" for="Name">Name:<label>
+                                <input type="text" id="name1" name="name1" placeholder="Name"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                    </div>
+                    <div class="mt-4">
+                        <label class="block" for="City">City:<label>
+                                <input type="text" id="addr" name="addr" placeholder="City"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                    </div>
+                    <div class="mt-4">
+                        <label class="block">Age:<label>
+                                <input type="text" id="age" name="age" placeholder="Age"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                    </div>
+                    <div class="flex">
+                        <button class="w-full px-6 py-2 mt-4 text-white bg-red-600 rounded-lg hover:bg-red-900" onclick="add_details()">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

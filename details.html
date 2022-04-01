@@ -1,0 +1,45 @@
+<html>
+
+<head>
+	<title>Donor Details</title>
+</head>
+
+<body>
+	<h1>Display donor Details </h1>
+	<script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+	<script src="/contract.js"></script>
+
+	<h3>Donor Details:</h3>
+	<form>
+		<table style="width:25%">
+			<tr>
+				<td>Enter Donor Id:</td>
+				<td><input type="text" id="tid" name="tid"></td>
+			</tr>
+			<tr>
+				<td><input type="button" onclick="show_details()" value="Get Details"></td>
+			</tr>
+			<tr>
+				<td>Donor Name:</td>
+				<td>
+					<div id="get_name"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>Donor Address:</td>
+				<td>
+					<div id="get_addr"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>Donor Age:</td>
+				<td>
+					<div id="get_age"></div>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+
+</html>
