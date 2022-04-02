@@ -16,7 +16,6 @@ window.addEventListener('load', async () => {
         // To Capture the account details from MetaMask
         const accounts = await ethereum.enable();
         account = accounts[0];
-        console.log(account);
 
     }
     // Legacy DApp browsers
@@ -58,7 +57,7 @@ var abi =
     },
     {
         "inputs":[],
-        "name":"return_donor_number",
+        "name":"return_donor_count",
         "outputs":[
             {
                 "internalType": "uint256",
@@ -104,7 +103,7 @@ var abi =
         "type": "function"
     }
 ]
-var contractaddress = '0x9F960aA7A608037fCb78b5d0Dd4FD4bc7858613d';
+var contractaddress = '0x038B4D03bFFaE181cc276609b060C3670F3C78B6';
 
 function add_details() {
     var myContract = new web3.eth.Contract(abi, contractaddress, {from: account, gasPrice: '5000000', gas: '500000'});
@@ -134,10 +133,12 @@ function show_details() {
 function returns_donor_number()
 {
     var myContract = new web3.eth.Contract(abi, contractaddress, {from: account, gasPrice: '5000000', gas: '500000'});
-    var result = myContract.methods.return_donor_count().call(function (err, results) {
+    var results = myContract.methods.return_donor_count().call(function (err, results) {
         if (err) { console.log(err); }
         if (results) {
             document.getElementById("get_count").innerHTML = results;
+            console.log(results);
         }
     }); 
 }
+window.onload = returns_donor_number;

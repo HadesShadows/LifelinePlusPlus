@@ -42,4 +42,9 @@ contract Donor {
         donor memory ds = donorlist[donor_ids];
         return (ds.donor_name, ds.donor_address, ds.donor_age);
     }
+
+    function return_donor_count() public view returns (uint256)
+    {
+        return donor_id-1;
+    }
 }
