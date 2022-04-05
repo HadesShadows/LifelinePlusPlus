@@ -7,7 +7,6 @@
 		<title>Lifeline++</title>
 		<script src="https://cdn.tailwindcss.com"></script>
         <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
-        
 	</head>
 	<body>
 		<!-- Navbar goes here -->
@@ -18,58 +17,25 @@
 						<div>
 							<!-- Website Logo -->
 							<a href="#" class="flex items-center py-4 px-2">
-								<box-icon name='donate-blood' size="md" border="square" pull="right" id="logo"></box-icon>
+								<!-- <box-icon name='donate-blood' size="md"  pull="right" id="logo"></box-icon> -->
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAjRJREFUSEuNlutVG0EMhT9VAB0AFQQqgHTgVIDpgFSAqQCnAkMFQAXEFWA6WDqACpSjeexodmb3RD+8e7QaPe6VNBYBNPxAemDi34PCSzok6Hi2HKpPSuPIB/PRmwCLivRRiAGaCoSQ3WiWbUb9GtgJ3Cg8dusdq5ziMZd1SfgceHf5XwCHOUhNX8rpYurLCO8DcAJ8pucActZU7I41HM4rZC3oTuEDsEoOwA/ghgBVhKOQb+9dme2hv8Al8AvkRdCVwjPIHvSq56oKUNx2AkSV5z376+kS7wsVeExLjydIhA0q94JuFO6APZAqaDtwAfLpAMoK9DljHaYzyk/A4Csj6lrf9VGZCW87eV8BtyCXoHuELcrLXJaeAytxh3BaEhuPfUFw8id0Tj3tZm8wnaauehI4jMQ4YgdQ6++ScMu1BTI4rD1NrJodcDypwJK4yPut0w2+l8Nnc7AFrgUGFc5QNgJ3ac28Cmw1VnnkSfeTrGlA7OGkKiNPsVVgg2ZyDyHYo8I1yDfoOcJgS85zEN3G5CPMLmIVMzr+BmzpWda3wEPSGZcVT12IUgsWv/UStFVhzs3RGg08mLiVUbjM27Y/kdVuaZrRYHoDOQb9nVq2MmohiuH+RwwKGzprgKdQUedKjM7iB2vBowx+syqcYWUjvKKsOr7HEzmAZWQr92TpdnZUGA9G8GbpBq8uHLdbXLX18upjN5d/xnvpvgu9XP499Fd6vTum9mNSi4eTVXNlN8nVin8YXeseF48UxgAAAABJRU5ErkJggg=="/>
 								<span class="font-semibold text-black-500 text-lg" pull="left">Lifeline++</span>
 							</a>
 						</div>
 						<!-- Primary Navbar items -->
-						<div class="hidden md:flex items-center space-x-1">
+						<div class="hidden md:flex items-center space-x-2">
 							<a href="" class="py-4 px-2 text-red-500 border-b-4 border-red-500 font-semibold ">Home</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-red-500 transition duration-300">Services</a>
 							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-red-500 transition duration-300">About</a>
 							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-red-500 transition duration-300">Contact Us</a>
 						</div>
 					</div>
 					<!-- Secondary Navbar items -->
 					<div class="hidden md:flex items-center space-x-4 ">
-						<a href="" class="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Individual</a>
-						<a href="" class="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Organization</a>
-					</div>
-					<!-- Mobile menu button -->
-					<div class="md:hidden flex items-center">
-						<button class="outline-none mobile-menu-button">
-						<svg class=" w-6 h-6 text-gray-500 hover:text-green-500 "
-							x-show="!showMenu"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path d="M4 6h16M4 12h16M4 18h16"></path>
-						</svg>
-					</button>
+						<a href="/user_login.html" class="py-2 px-2 font-medium text-red-500 bg-white-500 border-2 border-red-500 rounded hover:bg-red-500 hover:text-white transition duration-300" target="_blank">Individual</a>
+						<a href="" class="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-white hover:text-red-500 border-2 border-red-500 rounded transition duration-300" target="_blank">Organization</a>
 					</div>
 				</div>
 			</div>
-			<!-- mobile menu -->
-			<div class="hidden mobile-menu">
-				<ul class="">
-					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
-					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
-					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
-				</ul>
-			</div>
-			<script>
-				const btn = document.querySelector("button.mobile-menu-button");
-				const menu = document.querySelector(".mobile-menu");
-
-				btn.addEventListener("click", () => {
-					menu.classList.toggle("hidden");
-				});
-			</script>
 		</nav>
 	</body>
 </html>

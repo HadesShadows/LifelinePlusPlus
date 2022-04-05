@@ -123,6 +123,7 @@ function show_details() {
     var result = myContract.methods.retreive_donor_details(idd).call(function (err, result) {
         if (err) { console.log(err); }
         if (result) {
+            console.log(result);
             document.getElementById("get_name").innerHTML = result[0];
             document.getElementById("get_addr").innerHTML = result[1];
             document.getElementById("get_age").innerHTML = result[2];
