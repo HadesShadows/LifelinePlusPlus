@@ -30,87 +30,148 @@ window.addEventListener('load', async () => {
 
 });
 
-var abi = 
-[
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "_donor_name",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_donor_address",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_donor_age",
-                "type": "string"
-            }
-        ],
-        "name": "store_donor_details",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs":[],
-        "name":"return_donor_count",
-        "outputs":[
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type":"function"
-    },
-    {
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "donor_id",
-                "type": "uint256"
-            }
-        ],
-        "name": "retreive_donor_details",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    }
-]
-var contractaddress = '0x038B4D03bFFaE181cc276609b060C3670F3C78B6';
+var abi =
+    [
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_donor_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_donor_address",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_donor_age",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_donor_bg_grp",
+                    "type": "string"
+                },
+            ],
+            "name": "store_donor_details",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "return_bg_data",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "return_donor_count",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "donor_id",
+                    "type": "uint256"
+                }
+            ],
+            "name": "retreive_donor_details",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]
+var contractaddress = '0x07eDa0230fe05480093176041e228D8A05fC9ac8';
 
 function add_details() {
-    var myContract = new web3.eth.Contract(abi, contractaddress, {from: account, gasPrice: '5000000', gas: '500000'});
-    var ds1 = document.getElementById("addr").value;
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    var e = document.getElementById("blood_list");
+    var value = e.options[e.selectedIndex].value;
+    var text = e.options[e.selectedIndex].text;
+    var ds1 = document.getElementById("city").value;
     var ds2 = document.getElementById("age").value;
     var tname = document.getElementById("name1").value;
-    var result = myContract.methods.store_donor_details(tname, ds1, ds2).send(function (err, result) {
+    var result = myContract.methods.store_donor_details(tname, ds1, ds2, text).send(function (err, result) {
         console.log(myContract);
         if (err) { console.log(err); }
         if (result) { document.getElementById("result").innerHTML = result; }
@@ -118,28 +179,52 @@ function add_details() {
 }
 
 function show_details() {
-    var myContract = new web3.eth.Contract(abi, contractaddress, {from: account, gasPrice: '5000000', gas: '500000'});
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
     var idd = document.getElementById("tid").value;
     var result = myContract.methods.retreive_donor_details(idd).call(function (err, result) {
         if (err) { console.log(err); }
         if (result) {
             console.log(result);
             document.getElementById("get_name").innerHTML = result[0];
-            document.getElementById("get_addr").innerHTML = result[1];
+            document.getElementById("get_city").innerHTML = result[1];
             document.getElementById("get_age").innerHTML = result[2];
+            document.getElementById("get_bg_grp").innerHTML = result[3];
         }
     });
 }
 
-function returns_donor_number()
-{
-    var myContract = new web3.eth.Contract(abi, contractaddress, {from: account, gasPrice: '5000000', gas: '500000'});
+function returns_donor_number() {
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
     var results = myContract.methods.return_donor_count().call(function (err, results) {
         if (err) { console.log(err); }
         if (results) {
             document.getElementById("get_count").innerHTML = results;
             console.log(results);
         }
-    }); 
+    });
 }
-window.onload = returns_donor_number;
+
+
+function return_bg_count() {
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    var result = myContract.methods.return_bg_data().call(function (err, result) {
+        if (err) { console.log(err); }
+        if (result) {
+            console.log(result);
+            document.getElementById("O+").innerHTML = result[0];
+            document.getElementById("O-").innerHTML = result[1];
+            document.getElementById("A+").innerHTML = result[2];
+            document.getElementById("A-").innerHTML = result[3];
+            document.getElementById("B+").innerHTML = result[4];
+            document.getElementById("B-").innerHTML = result[5];
+            document.getElementById("AB+").innerHTML = result[6];
+            document.getElementById("AB-").innerHTML = result[7];
+        }
+    });
+}
+
+function PageLoad() {
+    return_bg_count();
+    returns_donor_number();
+}
+window.onload = PageLoad;
