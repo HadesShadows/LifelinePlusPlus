@@ -211,14 +211,14 @@ function return_bg_count() {
         if (err) { console.log(err); }
         if (result) {
             console.log(result);
-            document.getElementById("O+").innerHTML = result[0];
-            document.getElementById("O-").innerHTML = result[1];
-            document.getElementById("A+").innerHTML = result[2];
-            document.getElementById("A-").innerHTML = result[3];
-            document.getElementById("B+").innerHTML = result[4];
-            document.getElementById("B-").innerHTML = result[5];
-            document.getElementById("AB+").innerHTML = result[6];
-            document.getElementById("AB-").innerHTML = result[7];
+            document.getElementById("A").innerHTML = result[0];
+            document.getElementById("B").innerHTML = result[1];
+            document.getElementById("C").innerHTML = result[2];
+            document.getElementById("D").innerHTML = result[3];
+            document.getElementById("E").innerHTML = result[4];
+            document.getElementById("F").innerHTML = result[5];
+            document.getElementById("G").innerHTML = result[6];
+            document.getElementById("H").innerHTML = result[7];
         }
     });
 }

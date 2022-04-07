@@ -6,6 +6,11 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+.bloodStats{
+  margin-right: 2%;
+  margin-left: 2%;
+  padding-bottom: 2%;
+}
 .sidebar{
   position: fixed;
   height: 100%;
