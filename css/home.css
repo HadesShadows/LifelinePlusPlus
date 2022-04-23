@@ -1,0 +1,12 @@
+.carousel-inner > .carousel-item > img {
+    height: 800px;
+    object-fit:cover;
+  }
+
+  .text-gray-600 {
+       text-align: justify;
+  }
+
+  h1{
+      text-align: justify;
+  }
