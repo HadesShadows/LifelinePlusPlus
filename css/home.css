@@ -1,6 +1,6 @@
 .carousel-inner > .carousel-item > img {
     height: 800px;
-    object-fit:cover;
+    object-fit:fit;
   }
 
   .text-gray-600 {
@@ -14,6 +14,15 @@
       padding-bottom: 40px;
   }
   
+thead{
+  background-color: #420303;
+  color: white;
+}
+
+#tab h2{
+
+  text-align: center;
+}
 
   .footer-dark {
     padding:50px 0;
@@ -104,4 +113,5 @@
     font-size:13px;
     margin-bottom:0;
   }
+  
   
