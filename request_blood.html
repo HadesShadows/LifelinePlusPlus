@@ -11,6 +11,7 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="scripts/contract.js"></script>
     <div class="sidebar">
         <div class="logo-details">
@@ -19,29 +20,29 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="dashboard_admin.html">
+                <a href="dashboard_user.html">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Home</span>
                 </a>
             </li>
             <li>
-                <a href="dashboard_donor_details.html" class="active">
+                <a href="become_donor.html" target="_blank">
                     <i class='bx bxs-user-detail'></i>
-                    <span class="links_name">Donors</span>
+                    <span class="links_name">Become a Donor</span>
                 </a>
             </li>
             <li>
-                <a href="blood_avail.html">
-                    <i class='bx bxs-user-detail'></i>
-                    <span class="links_name">Blood avaiable</span>
+                <a href="request_blood.html" class="active">
+                    <i class='bx bx-box'></i>
+                    <span class="links_name">Request Blood</span>
                 </a>
             </li>
-            <!-- <li>
-                <a href="#">
+            <li>
+                <a href="dashboard_user_request_details.html">
                     <i class='bx bx-box'></i>
-                    <span class="links_name">Organizations</span>
+                    <span class="links_name">Help by donating</span>
                 </a>
-            </li> -->
+            </li>
             <li class="log_out">
                 <a href="index.html">
                     <i class='bx bx-log-out'></i>
@@ -54,11 +55,7 @@
         <nav>
             <div class="sidebar-button">
                 <i class='bx bx-menu sidebarBtn'></i>
-                <span class="dashboard">Donor Details</span>
-            </div>
-            <div class="search-box">
-                <input type="text" id="tid" name="tid" placeholder="Donor ID">
-                <i class='bx bx-search' id="search_butt" onclick="show_details()"></i>
+                <span class="dashboard">Blood Requirement</span>
             </div>
             <div class="profile-details">
                 <!--<img src="images/profile.jpg" alt="">-->
@@ -68,36 +65,28 @@
         </nav>
 
         <div class="home-content">
-
-
             <div class="sales-boxes">
                 <div class="recent-sales box">
                     <div class="title">Donor Details</div>
                     <div class="sales-details">
                         <ul class="details">
-                            <table class="details">
+                            <table class="antialiased font-sans text-black-900 text-lg">
                                 <tr>
-                                    <td class="topic">Donor Name:</td>
+                                    <td class="topic">Donor's Name:</td>
                                     <td class="topic">
-                                        <div id="get_name"></div>
+                                        <div id="get_name_giver"></div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="topic">Donor Age:</td>
+                                    <td class="topic">Donor's Age:</td>
                                     <td class="topic">
-                                        <div id="get_age"></div>
+                                        <div id="get_age_giver"></div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="topic">Donor Address:</td>
+                                    <td class="topic">Donor's Address:</td>
                                     <td class="topic">
-                                        <div id="get_city"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="topic">Donor Blood Group:</td>
-                                    <td class="topic">
-                                        <div id="get_bg_grp"></div>
+                                        <div id="get_city_giver"></div>
                                     </td>
                                 </tr>
                             </table>
@@ -105,6 +94,15 @@
                     </div>
                 </div>
             </div>
+            <div class="bg-gray-50 flex flex-col sm:justify-right items-right pt-6 sm:pt-0">
+                <div class="w-full sm:max-w-md p-5 mx-auto">
+                  <form>
+                    <div class="mt-6">
+                      <button class="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition" type="button" onclick="blood_donate()">Request Blood</button>   
+                    </div>
+                  </form>
+                </div>
+              </div>
         </div>
     </section>
 

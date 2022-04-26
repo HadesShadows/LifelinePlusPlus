@@ -1,34 +1,26 @@
 var account;
+
 window.addEventListener('load', async () => {
-
-
-    if (typeof window.ethereum !== 'undefined') {
-        console.log("MetaMask is Available :) !");
-    }
-
     // Modern DApp browsers
     if (window.ethereum) {
         window.web3 = new Web3(ethereum);
 
         // To prevent the page reloading when the MetaMask network changes
-        ethereum.autoRefreshOnNetworkChange = false;
+        ethereum.autoRefreshOnNetworkChange = true;
 
         // To Capture the account details from MetaMask
+
+        // const accounts = await ethereum.enable();
         const accounts = await ethereum.enable();
         account = accounts[0];
-
+        get_request_details();
+        return_bg_count();
+        returns_request_number();
+        returns_donor_number();
+        giver_details();
     }
-    // Legacy DApp browsers
-    else if (window.web3) {
-        //window.web3 = new Web3(web3.currentProvider);
-        window.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
-    }
-    // Non-DApp browsers
-    else {
-        console.log('Non-Ethereum browser detected. Please install MetaMask');
-    }
-
 });
+
 
 var abi =
     [
@@ -159,9 +151,87 @@ var abi =
             ],
             "stateMutability": "view",
             "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "return_request_count",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "request_blood",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "return_request_details",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "donate_blood",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "return_giver_details",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
         }
     ]
-var contractaddress = '0x07eDa0230fe05480093176041e228D8A05fC9ac8';
+var contractaddress = '0xeD384644B96fa091c12cC277532C37c2F3DE9645';
 
 function add_details() {
     var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
@@ -173,16 +243,17 @@ function add_details() {
     var tname = document.getElementById("name1").value;
     var result = myContract.methods.store_donor_details(tname, ds1, ds2, text).send(function (err, result) {
         console.log(myContract);
-        if (err) { console.log(err); }
+        // if (err) { console.log(err); }
         if (result) { document.getElementById("result").innerHTML = result; }
     });
 }
 
 function show_details() {
     var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    // console.log(account);
     var idd = document.getElementById("tid").value;
     var result = myContract.methods.retreive_donor_details(idd).call(function (err, result) {
-        if (err) { console.log(err); }
+        // if (err) { console.log(err); }
         if (result) {
             console.log(result);
             document.getElementById("get_name").innerHTML = result[0];
@@ -196,10 +267,10 @@ function show_details() {
 function returns_donor_number() {
     var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
     var results = myContract.methods.return_donor_count().call(function (err, results) {
-        if (err) { console.log(err); }
+        // if (err) { console.log(err); }
         if (results) {
             document.getElementById("get_count").innerHTML = results;
-            console.log(results);
+            // console.log(results);
         }
     });
 }
@@ -208,9 +279,9 @@ function returns_donor_number() {
 function return_bg_count() {
     var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
     var result = myContract.methods.return_bg_data().call(function (err, result) {
-        if (err) { console.log(err); }
+        // if (err) { console.log(err); }
         if (result) {
-            console.log(result);
+            // console.log(result);
             document.getElementById("A").innerHTML = result[0];
             document.getElementById("B").innerHTML = result[1];
             document.getElementById("C").innerHTML = result[2];
@@ -223,8 +294,60 @@ function return_bg_count() {
     });
 }
 
-function PageLoad() {
-    return_bg_count();
-    returns_donor_number();
+function returns_request_number() {
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    var results = myContract.methods.return_request_count().call(function (err, results) {
+        // if (err) { console.log(err); }
+        if (results) {
+            document.getElementById("get_request_count").innerHTML = results;
+        }
+    });
 }
-window.onload = PageLoad;
+
+function requests_blood() {
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    var result = myContract.methods.request_blood().send(function (err, result) {
+        // if (err) { console.log(err); }
+        if (result) { document.getElementById("result").innerHTML = result; }
+    });
+}
+
+function get_request_details() {
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    var result = myContract.methods.return_request_details().call(function (err, result) {
+        // if (err) { console.log(err); }
+        if (result) {
+            document.getElementById("get_names").innerHTML = result[0];
+            document.getElementById("get_citys").innerHTML = result[1];
+            document.getElementById("get_ages").innerHTML = result[2];
+            document.getElementById("get_bg_grps").innerHTML = result[3];
+        }
+    });
+}
+
+function blood_donate() {
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    var result = myContract.methods.donate_blood().send(function (err,result) { 
+        if (err) 
+        { 
+            console.log(err);
+        }
+        if (result) 
+        { 
+            console.log(result); 
+        }
+    });
+}
+
+function giver_details() {
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    var result = myContract.methods.return_giver_details().call(function (err, result) {
+        // if (err) { console.log(err); }
+        if (result) {
+            console.log(result);
+            document.getElementById("get_name_giver").innerHTML = result[0];
+            document.getElementById("get_city_giver").innerHTML = result[1];
+            document.getElementById("get_age_giver").innerHTML = result[2];
+        }
+    });
+}
