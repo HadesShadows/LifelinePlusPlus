@@ -10,7 +10,18 @@
   margin-right: 2%;
   margin-left: 2%;
   padding-bottom: 2%;
+  background-color: white;
+ 
 }
+
+.snd-row{
+  margin-top: 20px;
+}
+
+.card{
+   max-height: 350px;
+  }
+
 .sidebar{
   position: fixed;
   height: 100%;

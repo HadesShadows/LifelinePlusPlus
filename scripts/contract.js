@@ -231,7 +231,7 @@ var abi =
             "type": "function"
         }
     ]
-var contractaddress = '0xeD384644B96fa091c12cC277532C37c2F3DE9645';
+var contractaddress = '0x52883d796c85C093d9c7e2FCC478E9e71EAA077a';
 
 function add_details() {
     var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
