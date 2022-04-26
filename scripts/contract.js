@@ -1,4 +1,5 @@
 var account;
+
 window.addEventListener('load', async () => {
     // Modern DApp browsers
     if (window.ethereum) {
@@ -12,34 +13,13 @@ window.addEventListener('load', async () => {
         // const accounts = await ethereum.enable();
         const accounts = await ethereum.enable();
         account = accounts[0];
-        console.log(account);
+        get_request_details();
+        return_bg_count();
+        returns_request_number();
+        returns_donor_number();
+        giver_details();
     }
 });
-
-// const web3 = new Web3(window.web3.currentProvider);
-
-// window.addEventListener("load", async () => {
-//     // Modern dapp browsers...
-//     if (window.ethereum) {
-//         window.web3 = new Web3(window.ethereum);
-//         try {
-//             // Request account access if needed
-//             var accounts = await window.ethereum.enable();
-//             account = accounts[0];
-//             console.log(account);
-//         } catch (error) {
-//             // User denied account access...
-//         }
-//     }
-//     // Legacy dapp browsers...
-//     else if (window.web3) {
-//         window.web3 = new Web3(web3.currentProvider);
-//     }
-//     // Non-dapp browsers...
-//     else {
-//         console.log("Non-Ethereum browser detected. You should consider trying MetaMask!");
-//     }
-// });
 
 
 var abi =
@@ -223,12 +203,14 @@ var abi =
         {
             "inputs": [],
             "name": "donate_blood",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "return_giver_details",
             "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "",
-                    "type": "string"
-                },
                 {
                     "internalType": "string",
                     "name": "",
@@ -245,13 +227,11 @@ var abi =
                     "type": "string"
                 }
             ],
-            "stateMutability": "nonpayable",
+            "stateMutability": "view",
             "type": "function"
         }
     ]
-var contractaddress = '0x26708Df214A65Dda444E61266642e6650F4e8923';
-
-
+var contractaddress = '0xeD384644B96fa091c12cC277532C37c2F3DE9645';
 
 function add_details() {
     var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
@@ -320,7 +300,6 @@ function returns_request_number() {
         // if (err) { console.log(err); }
         if (results) {
             document.getElementById("get_request_count").innerHTML = results;
-            // console.log(results);
         }
     });
 }
@@ -335,7 +314,6 @@ function requests_blood() {
 
 function get_request_details() {
     var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
-    console.log(account);
     var result = myContract.methods.return_request_details().call(function (err, result) {
         // if (err) { console.log(err); }
         if (result) {
@@ -349,18 +327,27 @@ function get_request_details() {
 
 function blood_donate() {
     var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
-    var result = myContract.methods.donate_blood().call(function (err, result) {
-        // if (err) { console.log(err); }
-        if (result) {
-            // console.log(result);
+    var result = myContract.methods.donate_blood().send(function (err,result) { 
+        if (err) 
+        { 
+            console.log(err);
+        }
+        if (result) 
+        { 
+            console.log(result); 
         }
     });
 }
 
-function PageLoad() {
-    return_bg_count();
-    returns_donor_number();
-    returns_request_number();
-    get_request_details();
+function giver_details() {
+    var myContract = new web3.eth.Contract(abi, contractaddress, { from: account, gasPrice: '5000000', gas: '500000' });
+    var result = myContract.methods.return_giver_details().call(function (err, result) {
+        // if (err) { console.log(err); }
+        if (result) {
+            console.log(result);
+            document.getElementById("get_name_giver").innerHTML = result[0];
+            document.getElementById("get_city_giver").innerHTML = result[1];
+            document.getElementById("get_age_giver").innerHTML = result[2];
+        }
+    });
 }
-window.onload = PageLoad;

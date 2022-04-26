@@ -70,29 +70,23 @@
                     <div class="title">Donor Details</div>
                     <div class="sales-details">
                         <ul class="details">
-                            <table class="details">
+                            <table class="antialiased font-sans text-black-900 text-lg">
                                 <tr>
-                                    <td class="topic">Person Name:</td>
+                                    <td class="topic">Donor's Name:</td>
                                     <td class="topic">
-                                        <div id="get_names"></div>
+                                        <div id="get_name_giver"></div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="topic">Person Age:</td>
+                                    <td class="topic">Donor's Age:</td>
                                     <td class="topic">
-                                        <div id="get_ages"></div>
+                                        <div id="get_age_giver"></div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="topic">Person Address:</td>
+                                    <td class="topic">Donor's Address:</td>
                                     <td class="topic">
-                                        <div id="get_citys"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="topic">Person Blood Group:</td>
-                                    <td class="topic">
-                                        <div id="get_bg_grps"></div>
+                                        <div id="get_city_giver"></div>
                                     </td>
                                 </tr>
                             </table>
@@ -104,7 +98,7 @@
                 <div class="w-full sm:max-w-md p-5 mx-auto">
                   <form>
                     <div class="mt-6">
-                      <button class="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition" onclick="requests_blood()">Request Blood</button>
+                      <button class="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition" type="button" onclick="blood_donate()">Request Blood</button>   
                     </div>
                   </form>
                 </div>
