@@ -19,7 +19,7 @@
 }
 
 .card{
-   max-height: 350px;
+   max-height: 375px;
   }
 
 .sidebar{
@@ -207,7 +207,7 @@ nav .profile-details i{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% / 4 - 15px);
+  width: 500px;
   background: #fff;
   padding: 15px 14px;
   border-radius: 12px;
