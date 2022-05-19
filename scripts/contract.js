@@ -233,7 +233,7 @@ var abi =
         }
     ]
 
-var contractaddress = '0xE2572Fc86cAD2C165B48fbF2Fc99EFAa0D4079DC';
+var contractaddress = '0x0adB290c999d4898BC26F988CC1648D3Cd0e8e24';
 
 
 function add_details() {

@@ -1,0 +1,2 @@
+public class ise01 {
+}
